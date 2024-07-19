@@ -1,14 +1,32 @@
 import unittest
-from main import divide
+from main import check, divide, remainder
+
+class TestCheck(unittest.TestCase):
+    def test_check(self):
+        self.assertTrue(check(2))
+        self.assertTrue(check(6))
+        self.assertTrue(check(220))
+        self.assertFalse(check(1))
+        self.assertFalse(check(3))
+        self.assertFalse(check(57))
 
 class TestDivide(unittest.TestCase):
-   def test_divide_success(self):
-       self.assertEqual(divide(10, 0), 5)
-       self.assertEqual(divide(6, 3), 2)
-       self.assertEqual(divide(70, 2), 35)
+    def test_divide_success(self):
+        self.assertEqual(divide(10, 0), 5)
+        self.assertEqual(divide(6, 3), 2)
+        self.assertEqual(divide(70, 2), 35)
 
-   def test_divide_by_zero(self):
-       self.assertRaises(ValueError, divide, 6, 0)
+    def test_divide_by_zero(self):
+        self.assertRaises(ValueError, divide, 6, 0)
+
+class TestRemainder(unittest.TestCase):
+    def test_remainder_success(self):
+        self.assertEqual(remainder(10, 3), 1)
+        self.assertEqual(remainder(17, 5), 2)
+        self.assertEqual(remainder(25, 4), 1)
+
+    def test_remainder_by_zero(self):
+        self.assertRaises(ValueError, remainder, 10, 0)
 
 # from main import check
 # class TestCheck(unittest.TestCase):
